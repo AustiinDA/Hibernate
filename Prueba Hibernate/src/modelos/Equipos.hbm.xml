@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Equipos" table="equipos">
+		<id column="Nombre" name="nombre" type="varchar(20)" />
+		<property name="ciudad" column="Ciudad" />
+		<property name="conferencia" column="Conferencia" />
+		<property name="division" column="Division" />
+
+		<set name="jugadores" cascade="all" inverse="true">
+			<key>
+				<column name="nombre_equipo" not-null="true"></column>
+			</key>
+			<one-to-many class="modelos.Jugadores" />
+		</set>
+	</class>
+</hibernate-mapping>
